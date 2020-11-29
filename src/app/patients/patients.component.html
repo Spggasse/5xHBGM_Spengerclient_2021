@@ -1,0 +1,15 @@
+<table class="table">
+    <tr>
+        <th>PatientenId</th>
+        <th>Name</th>
+        <th>Identifier</th>
+        <th></th>
+    </tr>
+    <tr *ngFor='let patient of patientArr$' (click)="selectPatient(patient)">
+        <td>{{patient.id}}</td>
+        <td>{{patient.name[0]?.text}}</td>
+        <td> {{selectedPatient?.id}} 
+            <p *ngFor='let identifier of patient.identifier'>{{identifier.value}}</p>
+        </td>
+    </tr>
+</table>
