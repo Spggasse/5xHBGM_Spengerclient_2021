@@ -11,11 +11,24 @@ export class PatientModel
         public deceasedBoolean: boolean, 
         public deceasedDateTime: Date, 
         public multipleBirthBoolean: boolean, 
-        public multipleBirthInteger: number,) { } 
+        public multipleBirthInteger: number,
+        public deceased: Date
+
+        ) { } 
+
     } 
     
-    export class HumanName { 
-        constructor() { } 
+    export class HumanName{
+        public id: string = ''
+            public use: string = ''
+            public text: string = ''
+            public family: string = ''
+        constructor(
+            id: string = '',
+            use: string = '',
+            text: string = '',
+            family: string = ''
+        ){this.id=id;this.use=use;this.family=family, this.text=text}
     } 
     
     export class ContactPoint { 

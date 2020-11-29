@@ -1,1 +1,63 @@
-<p>patient works!</p>
+<ul class="list-group">
+    <li class="list-group-item">
+      ID: {{patient?.id}}
+    </li>
+    <li class="list-group-item">
+        <label>
+            Active:
+            {{patient?.active}}
+          </label>
+          
+
+    </li>
+    <li class="list-group-item">
+        <label>
+            Gender:
+            {{patient?.gender}}
+          </label>
+          
+    </li>
+    <li class="list-group-item">
+      <label>
+        Birth date:
+          
+        {{patient?.birthDate}}
+      </label>
+    </li>
+    
+    <li class="list-group-item">
+        <label>
+            Deceased
+              
+            {{patient?.deceasedBoolean}}
+          </label>
+    </li>
+    
+    <li class="list-group-item">
+      <div formArrayName ="name">
+        <h3>Names</h3>
+        
+        <div *ngFor="let name of patient?.name">
+          <div>        
+            <label>
+              Use:
+              {{name?.use}}
+            </label>
+            <label>
+              Text:
+              {{name?.text}}
+            </label>
+            <label>
+              Label:
+               {{name?.family}}
+            </label>
+          </div>    
+        </div>
+      </div>
+    </li>      
+    
+</ul>
+<div>
+    <button (click)="deletePatient()" type="button" class="btn btn-danger">Patienten löschen</button>    
+    <button (click)="updatePatient()" type="button" class="btn btn-warning">Änderungen speichern</button>
+</div>

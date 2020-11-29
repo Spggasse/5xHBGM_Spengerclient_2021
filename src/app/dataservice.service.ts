@@ -21,11 +21,33 @@ export class DataserviceService {
       .get<PatientModel[]>(patientUrl)
       .pipe(catchError(this.handleError('getPatients', [])));
   }
-  public getPatient(id: number): Observable<PatientModel> {
+  public getPatient(id: string): Observable<PatientModel> {
     return this.http
       .get<PatientModel>(patientUrl + id)
       .pipe(catchError(this.handleError('getPatientDetail', null)));
   }
+
+  public deletePatient (id: string): Observable<{}> {    
+    return this.http.delete(patientUrl+id, httpOptions)
+      .pipe(
+        catchError(this.handleError('delete Patient'))
+      );
+  }
+
+  public addPatient (Patient: PatientModel): Observable<PatientModel> {
+    return this.http.post<PatientModel>(patientUrl, Patient, httpOptions)
+      .pipe(
+        catchError(this.handleError('addPatient', Patient))
+      );
+  }
+
+  public updatePatient (Patient: PatientModel): Observable<PatientModel> {
+    return this.http.put<PatientModel>(patientUrl+Patient.id, Patient, httpOptions)
+      .pipe(
+        catchError(this.handleError('updatePatient', Patient))
+      );
+  }
+
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       // TODO: send the error to remote logging infrastructure
