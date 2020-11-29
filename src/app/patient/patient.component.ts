@@ -44,19 +44,6 @@ export class PatientComponent implements OnInit, OnChanges {
       );
   }
 
-  createPatient() {
-    var newPatient:PatientModel = new PatientModel(null,null,null,null,true,"unknown",null,false,null,false,null,null)
-    
-    this.service.addPatient(newPatient)
-      .subscribe(
-        patient => {
-          console.log("Patient created")
-          this.patient = patient
-          this.patientModified.emit(true)
-        }
-      );
-  }
-
   deletePatient() {
     this.service.deletePatient(this.patient.id)
       .subscribe(x => this.patientModified.emit(true));
